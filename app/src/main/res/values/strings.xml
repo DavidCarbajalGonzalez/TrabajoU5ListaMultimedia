@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TrabajoU5ListaMultimedia</string>
+    <string name="imagen_del_item">Imagen del item</string>
+    <string name="t_tulo_del_item">Título del Item</string>
+</resources>
