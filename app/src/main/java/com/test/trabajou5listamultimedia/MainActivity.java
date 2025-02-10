@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
         itemList.add(new Item("Ver Video 2", 1, 2, R.drawable.ic_video));
         itemList.add(new Item("Escuchar Audio 1", 2, 1, R.drawable.ic_audio));
         itemList.add(new Item("Escuchar Audio 2", 2, 2, R.drawable.ic_audio));
-        itemList.add(new Item("Instagram", 3, 1, R.drawable.ic_web_instagram));
-        itemList.add(new Item("TikTok", 3, 2, R.drawable.ic_web_tiktok));
+        itemList.add(new Item("Voz de Galicia", 3, 1, R.drawable.ic_web_voz));
+        itemList.add(new Item("Youtube", 3, 2, R.drawable.ic_web_tiktok));
 
 
         adapter = new ItemAdapter(itemList, item -> {

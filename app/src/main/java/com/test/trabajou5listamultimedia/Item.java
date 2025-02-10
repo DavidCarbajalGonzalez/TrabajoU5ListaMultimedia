@@ -2,9 +2,9 @@ package com.test.trabajou5listamultimedia;
 
 public class Item {
     private String title;
-    private int type; // 1: Video, 2: Audio, 3: Web
-    private int id;   // Para distinguir entre los videos y audios
-    private int imageResId; // ID de la imagen para cada item
+    private int type;
+    private int id;
+    private int imageResId;
 
     public Item(String title, int type, int id, int imageResId) {
         this.title = title;
