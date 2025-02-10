@@ -18,6 +18,8 @@ public class MediaDialog extends DialogFragment {
     private static final String ARG_TYPE = "type";
     private static final String ARG_ID = "id";
 
+    private MediaPlayer mediaPlayer;
+
     public static MediaDialog newInstance(int type, int id) {
         MediaDialog fragment = new MediaDialog();
         Bundle args = new Bundle();
@@ -45,13 +47,18 @@ public class MediaDialog extends DialogFragment {
             int videoResId = (id == 1) ? R.raw.video : R.raw.video1;
             Uri videoUri = Uri.parse("android.resource://" + requireContext().getPackageName() + "/" + videoResId);
             videoView.setVideoURI(videoUri);
-            videoView.setMediaController(new MediaController(getContext()));
+            MediaController mediaController = new MediaController(getContext());
+            mediaController.setAnchorView(videoView);
+            videoView.setMediaController(mediaController);
             videoView.start();
         } else if (type == 2) { // Audios
             audioPlayButton.setVisibility(View.VISIBLE);
             int audioResId = (id == 1) ? R.raw.audio : R.raw.audio1;
             audioPlayButton.setOnClickListener(v -> {
-                MediaPlayer mediaPlayer = MediaPlayer.create(getContext(), audioResId);
+                if (mediaPlayer != null) {
+                    mediaPlayer.release();
+                }
+                mediaPlayer = MediaPlayer.create(getContext(), audioResId);
                 mediaPlayer.start();
             });
         } else if (type == 3) { // Webs
@@ -60,9 +67,28 @@ public class MediaDialog extends DialogFragment {
             webView.loadUrl(url);
         }
 
-        builder.setView(view).setNegativeButton("Cerrar", (dialog, which) -> dialog.dismiss());
+        builder.setView(view)
+                .setNegativeButton("Cerrar", (dialog, which) -> {
+                    stopAndReleaseMediaPlayer();  // Detenemos el MediaPlayer al cerrar el diálogo
+                    dialog.dismiss();
+                });
+
         return builder.create();
     }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        stopAndReleaseMediaPlayer();  // Aseguramos la liberación del recurso si el fragmento es destruido
+    }
+
+    private void stopAndReleaseMediaPlayer() {
+        if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
 }
-
-

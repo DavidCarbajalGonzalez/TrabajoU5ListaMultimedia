@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         itemList = new ArrayList<>();
-        itemList.add(new Item("Ver Video 1", 1, 1, R.drawable.ic_video));
-        itemList.add(new Item("Ver Video 2", 1, 2, R.drawable.ic_video));
-        itemList.add(new Item("Escuchar Audio 1", 2, 1, R.drawable.ic_audio));
-        itemList.add(new Item("Escuchar Audio 2", 2, 2, R.drawable.ic_audio));
+        itemList.add(new Item("Noria", 1, 1, R.drawable.ic_video));
+        itemList.add(new Item("Bajada de montaña", 1, 2, R.drawable.ic_video));
+        itemList.add(new Item("Música", 2, 1, R.drawable.ic_audio));
+        itemList.add(new Item("Música", 2, 2, R.drawable.ic_audio));
         itemList.add(new Item("Voz de Galicia", 3, 1, R.drawable.ic_web_voz));
         itemList.add(new Item("Twitch", 3, 2, R.drawable.ic_web_twitch));
 
