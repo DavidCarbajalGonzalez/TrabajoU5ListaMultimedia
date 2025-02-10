@@ -56,7 +56,7 @@ public class MediaDialog extends DialogFragment {
             });
         } else if (type == 3) { // Webs
             webView.setVisibility(View.VISIBLE);
-            String url = (id == 1) ? "https://www.lavozdegalicia.es" : "https://www.youtube.com";
+            String url = (id == 1) ? "https://www.lavozdegalicia.es" : "https://www.twitch.tv/";
             webView.loadUrl(url);
         }
 
