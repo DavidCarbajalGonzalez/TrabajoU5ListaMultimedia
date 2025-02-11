@@ -52,16 +52,16 @@ public class MediaDialog extends DialogFragment {
             videoView.setMediaController(mediaController);
             videoView.start();
         } else if (type == 2) { // Audios
-            audioPlayButton.setVisibility(View.VISIBLE);
+            audioPlayButton.setVisibility(View.VISIBLE);  // Hacemos el botón visible
             int audioResId = (id == 1) ? R.raw.audio : R.raw.audio1;
             audioPlayButton.setOnClickListener(v -> {
                 if (mediaPlayer != null) {
                     mediaPlayer.release();
                 }
-                mediaPlayer = MediaPlayer.create(getContext(), audioResId);
-                mediaPlayer.start();
-            });
-        } else if (type == 3) { // Webs
+            mediaPlayer = MediaPlayer.create(getContext(), audioResId);
+            mediaPlayer.start();
+        });
+    } else if (type == 3) { // Webs
             webView.setVisibility(View.VISIBLE);
             String url = (id == 1) ? "https://www.lavozdegalicia.es" : "https://www.twitch.tv/";
             webView.loadUrl(url);
